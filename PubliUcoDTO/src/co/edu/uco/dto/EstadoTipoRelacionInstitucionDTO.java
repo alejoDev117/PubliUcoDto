@@ -36,14 +36,30 @@ public class EstadoTipoRelacionInstitucionDTO {
 	public final String getNombre() {
 		return nombre;
 	}
+	
+	
 	public final void setNombre(final String nombre) {
-		this.nombre = nombre;
+		this.nombre = "";
+		if(esVacioONulo(nombre)) {
+			this.nombre = nombre.trim();
+		}
+		
 	}
 	public final String getDescripcion() {
 		return descripcion;
 	}
+	
+	
 	public final void setDescripcion(final String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	
+	private boolean esVacioONulo(String contenido) {
+		if(contenido == null || "".equals(contenido.trim())) {
+			return true;
+		}
+		return false;
 	}
 	
 
