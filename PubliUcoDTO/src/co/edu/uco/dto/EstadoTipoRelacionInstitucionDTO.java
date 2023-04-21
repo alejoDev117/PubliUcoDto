@@ -2,6 +2,9 @@ package co.edu.uco.dto;
 
 import java.util.UUID;
 
+import co.edu.uco.crosscutting.utils.UtilText;
+import co.edu.uco.crosscutting.utils.UtilUUID;
+
 public class EstadoTipoRelacionInstitucionDTO {
 	private UUID identificador;
 	private String nombre;
@@ -19,49 +22,51 @@ public class EstadoTipoRelacionInstitucionDTO {
 	
 	public EstadoTipoRelacionInstitucionDTO() {
 		super();
-		setIdentificador(identificador);
-		setNombre("");
-		setDescripcion("");
+		setIdentificador(UtilUUID.getDefaultUuid());
+		setNombre(UtilText.getUtilText().getDefaultValue());
+		setDescripcion(UtilText.getUtilText().getDefaultValue());
 	}
 
+	public static EstadoTipoRelacionInstitucionDTO create() {
+		return new EstadoTipoRelacionInstitucionDTO();
+	}
 	
 	public final UUID getIdentificador() {
 		return identificador;
 	}
-	public final void setIdentificador(final UUID identificador) {
-		this.identificador = identificador; 
+	public final EstadoTipoRelacionInstitucionDTO setIdentificador(final UUID identificador) {
+		this.identificador = UtilUUID.getDefault(identificador); 
 		
-		
+		return this;
 	}
 	public final String getNombre() {
 		return nombre;
 	}
 	
 	
-	public final void setNombre(final String nombre) {
-		this.nombre = "";
-		if(esVacioONulo(nombre)) {
-			this.nombre = nombre.trim();
-		}
+	public final EstadoTipoRelacionInstitucionDTO setNombre(final String nombre) {
+		this.nombre = UtilText.getUtilText().applyTrim(nombre);
+		return this;
 		
 	}
+	
 	public final String getDescripcion() {
 		return descripcion;
 	}
 	
 	
-	public final void setDescripcion(final String descripcion) {
-		this.descripcion = descripcion;
+	public final EstadoTipoRelacionInstitucionDTO setDescripcion(final String descripcion) {
+		this.descripcion = UtilText.getUtilText().applyTrim(nombre);
+		
+		return this;
 	}
-	
-	
-	private boolean esVacioONulo(String contenido) {
-		if(contenido == null || "".equals(contenido.trim())) {
-			return true;
-		}
-		return false;
-	}
-	
 
+
+	@Override
+	public String toString() {
+		return "EstadoTipoRelacionInstitucionDTO [identificador=" + identificador + ", nombre=" + nombre
+				+ ", descripcion=" + descripcion + "]";
+	}	
 
 }
+
