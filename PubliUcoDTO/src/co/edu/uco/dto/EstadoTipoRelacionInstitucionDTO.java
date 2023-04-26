@@ -56,7 +56,7 @@ public class EstadoTipoRelacionInstitucionDTO {
 	
 	
 	public final EstadoTipoRelacionInstitucionDTO setDescripcion(final String descripcion) {
-		this.descripcion = UtilText.getUtilText().applyTrim(nombre);
+		this.descripcion = UtilText.getUtilText().applyTrim(descripcion);
 		
 		return this;
 	}
