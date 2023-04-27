@@ -34,6 +34,7 @@ public class EstadoTipoRelacionInstitucionDTO {
 	public final UUID getIdentificador() {
 		return identificador;
 	}
+	
 	public final EstadoTipoRelacionInstitucionDTO setIdentificador(final UUID identificador) {
 		this.identificador = UtilUUID.getDefault(identificador); 
 		
@@ -60,13 +61,6 @@ public class EstadoTipoRelacionInstitucionDTO {
 		
 		return this;
 	}
-
-
-	@Override
-	public String toString() {
-		return "EstadoTipoRelacionInstitucionDTO [identificador=" + identificador + ", nombre=" + nombre
-				+ ", descripcion=" + descripcion + "]";
-	}	
 
 }
 

@@ -16,10 +16,10 @@ public final class TipoRelacionInstitucionDTO {
 	public TipoRelacionInstitucionDTO(UUID identificador, String nombre, String descripcion,
 			EstadoTipoRelacionInstitucionDTO estadoTipoRelacionInstitucion) {
 		super();
-		this.identificador = identificador;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.estadoTipoRelacionInstitucion = estadoTipoRelacionInstitucion;
+		setIdentificador(identificador);
+		setNombre(nombre);
+		setDescripcion(descripcion);
+		setEstadoTipoRelacionInstitucion(estadoTipoRelacionInstitucion);
 	}
 
 
@@ -28,13 +28,15 @@ public final class TipoRelacionInstitucionDTO {
 		setIdentificador(UtilUUID.getDefaultUuid());
 		setNombre(UtilText.getUtilText().getDefaultValue());
 		setDescripcion(UtilText.getUtilText().getDefaultValue());
+		setEstadoTipoRelacionInstitucion(EstadoTipoRelacionInstitucionDTO.create());
 	}
 
 	
-	public TipoRelacionInstitucionDTO create() {
+	public static TipoRelacionInstitucionDTO create() {
 		return new TipoRelacionInstitucionDTO();
 	}
-
+	
+	
 	public final UUID getIdentificador() {
 		return identificador;
 	}
@@ -74,7 +76,7 @@ public final class TipoRelacionInstitucionDTO {
 
 
 	public final TipoRelacionInstitucionDTO  setEstadoTipoRelacionInstitucion(EstadoTipoRelacionInstitucionDTO estadoTipoRelacionInstitucion) {
-		this.estadoTipoRelacionInstitucion = UtilObject.getDefault(final estadoTipoRelacionInstitucion, EstadoTipoRelacionInstitucionDTO.create());
+		this.estadoTipoRelacionInstitucion = UtilObject.getDefault( estadoTipoRelacionInstitucion, EstadoTipoRelacionInstitucionDTO.create());
 		return this;
 	}
 	
